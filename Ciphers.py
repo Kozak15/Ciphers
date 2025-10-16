@@ -109,3 +109,30 @@ def playfair_cipher(s,keyword):
         else:
             result += (griddy[r1][c2] + griddy[r2][c1])
     return result
+#Alphabet cipher
+
+#Helper function to shift the alphabet b/c grid is too big
+def shift(s,i):
+    return s[i:] + s[:i]
+
+#Lewis Carroll's Alphabet Cipher. 
+def alphacipher(text,keyword):#Text and keyword should be uppercase letters only, no spaces
+    alpha = [shift('ABCDEFGHIJKLMNOPQRSTUVWXYZ',i) for i in range(0,26)]
+    beta = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    q,r = len(text)//len(keyword), len(text)%len(keyword)
+    l = keyword * q + keyword[:r]
+    st = ''
+    for i in range(len(text)):
+        st += alpha[beta.index(text[i])][beta.index(l[i])]
+    return st
+#Same reasoning as above
+def alphadecipher(text,keyword):
+    alpha = [shift('ABCDEFGHIJKLMNOPQRSTUVWXYZ',i) for i in range(26)]
+    beta = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    q,r = len(text)//len(keyword), len(text)%len(keyword)
+    l = keyword * q + keyword[:r]
+    st = ''
+    for i in range(len(text)):
+        row = alpha[beta.index(l[i])]
+        st += beta[row.index(text[i])]
+    return st
