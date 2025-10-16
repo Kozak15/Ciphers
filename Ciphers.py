@@ -120,8 +120,7 @@ def alphacipher(text,keyword):#Text and keyword should be uppercase letters only
     alpha = [shift('ABCDEFGHIJKLMNOPQRSTUVWXYZ',i) for i in range(0,26)]
     beta = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     q,r = len(text)//len(keyword), len(text)%len(keyword)
-    l = keyword * q + keyword[:r]
-    st = ''
+    l,st = keyword * q + keyword[:r],''
     for i in range(len(text)):
         st += alpha[beta.index(text[i])][beta.index(l[i])]
     return st
@@ -130,9 +129,9 @@ def alphadecipher(text,keyword):
     alpha = [shift('ABCDEFGHIJKLMNOPQRSTUVWXYZ',i) for i in range(26)]
     beta = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     q,r = len(text)//len(keyword), len(text)%len(keyword)
-    l = keyword * q + keyword[:r]
-    st = ''
+    l,st = keyword * q + keyword[:r],''
     for i in range(len(text)):
         row = alpha[beta.index(l[i])]
         st += beta[row.index(text[i])]
     return st
+    
