@@ -147,5 +147,18 @@ def alphadecipher(text,keyword):
         row = alpha[beta.index(l[i])]
         st += beta[row.index(text[i])]
     return st
-    
+
+#Testcases
+def main():
+    print(keyword_cipher('APPLE','HOME'))
+    print(keyword_decipher('HPPJA','HOME'))
+    print(keywords_cipher('ATTACKATDAWN', ['KEY','WORD']))
+    print(keywords_decipher('KSSWYHKSAWVK', ['KEY','WORD']))
+    print(playfair_cipher('BALLOON','KEYWORD'))
+    print(playfair_decipher('CBIZSCES','KEYWORD'))#Returns 'BALXLOON'
+    print(alphacipher('HELLOALPHACIPHER','KEYWORD'))
+    print(alphadecipher('RIJHCROZLYYWGKOV', 'KEYWORD'))
+if __name__ == "__main__":
+    main()
+
 
