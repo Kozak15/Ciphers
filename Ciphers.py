@@ -109,12 +109,25 @@ def playfair_cipher(s,keyword):
         else:
             result += (griddy[r1][c2] + griddy[r2][c1])
     return result
-#Alphabet cipher
+def playfair_decipher(s,keyword):
+    griddy = grid(keyword)
+    pair = pairs(s)
+    result = ''
+    for a,b in pair:
+        r1,c1 = coord(a,griddy)
+        r2,c2 = coord(b,griddy)
+        if r1 == r2:
+            result += (griddy[r1][(c1-1) % 5] + griddy[r2][(c2-1) % 5])
+        elif c1 == c2:
+            result += (griddy[(r1-1) % 5][c1] + griddy[(r2-1) % 5][c2])
+        else:
+            result += (griddy[r1][c2] + griddy[r2][c1])
+    return result
+#'X' is used to replace duplicate letters and pad odd-length strings
 
 #Helper function to shift the alphabet b/c grid is too big
 def shift(s,i):
     return s[i:] + s[:i]
-
 #Lewis Carroll's Alphabet Cipher. 
 def alphacipher(text,keyword):#Text and keyword should be uppercase letters only, no spaces
     alpha = [shift('ABCDEFGHIJKLMNOPQRSTUVWXYZ',i) for i in range(0,26)]
@@ -135,3 +148,4 @@ def alphadecipher(text,keyword):
         st += beta[row.index(text[i])]
     return st
     
+
