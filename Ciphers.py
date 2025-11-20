@@ -159,6 +159,15 @@ def string_to_bin(s):
         st += '0'*(8-n) + binary
         st += ' '
     return st
+
+def bin_to_string(s):
+    s = s.split(' ')
+    st = ''
+    for item in s:
+        if item != '':
+            st += chr(int(item,2))
+    return st
+    
 def XOR(s,key):
     st = ''
     for i in range(0,len(s),9):
@@ -182,6 +191,7 @@ def main():
     print(alphadecipher('RIJHCROZLYYWGKOV', 'KEYWORD'))
 if __name__ == "__main__":
     main()
+
 
 
 
