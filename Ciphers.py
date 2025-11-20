@@ -148,6 +148,28 @@ def alphadecipher(text,keyword):
         st += beta[row.index(text[i])]
     return st
 
+#XOR Cipher
+#Takes in binary string, and binary key, returns binary string
+#Assume that all are 8-bit separated by spaces
+def string_to_bin(s):
+    st = ''
+    for item in s:
+        binary = bin(ord(item))[2:]
+        n = len(binary)
+        st += '0'*(8-n) + binary
+        st += ' '
+    return st
+def XOR(s,key):
+    st = ''
+    for i in range(0,len(s),9):
+        string = s[i:i+8]
+        sub = ''
+        for j in range(8):
+            sub += str(int(string[j])^int(key[j]))
+        st += sub
+        st += ' '
+    return st
+    
 #Testcases
 def main():
     print(keyword_cipher('APPLE','HOME'))
@@ -160,5 +182,6 @@ def main():
     print(alphadecipher('RIJHCROZLYYWGKOV', 'KEYWORD'))
 if __name__ == "__main__":
     main()
+
 
 
